@@ -2,17 +2,17 @@
   "verdict": {
     "decision": "Hold",
     "n_errors": 0,
-    "n_warn_images": 34,
-    "n_images": 193,
-    "warn_ratio": 0.1762,
+    "n_warn_images": 38,
+    "n_images": 202,
+    "warn_ratio": 0.1881,
     "reasons": [
-      "Tỉ lệ ảnh còn cảnh báo là 17.62% (34/193 ảnh), vượt hoặc chạm ngưỡng giữ lại 10.00%."
+      "Tỉ lệ ảnh còn cảnh báo là 18.81% (38/202 ảnh), vượt hoặc chạm ngưỡng giữ lại 10.00%."
     ]
   },
   "reviewed": 80,
   "budget": 80,
-  "seconds": 4.1,
+  "seconds": 3.8,
   "exported": "C:\\Users\\hoa06\\Documents\\K5-L23-DAY09-2A202603181-AutoQCPipeline\\submission\\export\\clean_v1",
-  "config_sha1": "b8c69ed7653ad6ea2bd1ebe1e9cc5279b0a05b11",
+  "config_sha1": "6af2dc99572f2be3ec51dd66ca55a0b2a7dbc1cc",
   "review_sim_sha1": "7988ca22827f780a7043a2300490e679a1697154"
 }

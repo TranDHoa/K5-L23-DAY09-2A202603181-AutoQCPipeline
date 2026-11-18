@@ -1,9 +1,9 @@
 # Danh sách lỗi — SAU sửa tự động (v2)
-ảnh đã quét: 193
+ảnh đã quét: 202
 
 label_format -> 10 dòng
-missing_labels -> 20 dòng
-second_opinion -> 120 dòng
+missing_labels -> 21 dòng
+second_opinion -> 123 dòng
 
 [ERROR] MISSING_LABEL_FILE   img_0031  ảnh không có file nhãn
 [ERROR] MISSING_LABEL_FILE   img_0053  ảnh không có file nhãn
@@ -22,6 +22,7 @@ second_opinion -> 120 dòng
 [WARN ] BOX_TINY             img_0161.txt:3  cạnh ngắn box quá nhỏ (11.4px < 12px)
 [WARN ] BOX_TINY             img_0161.txt:4  cạnh ngắn box quá nhỏ (11.9px < 12px)
 [WARN ] EMPTY_LABEL          img_0004  file nhãn rỗng: ảnh nền hay thiếu nhãn?
+[WARN ] EMPTY_LABEL          img_0013  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0050  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0057  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0065  file nhãn rỗng: ảnh nền hay thiếu nhãn?
@@ -53,6 +54,7 @@ second_opinion -> 120 dòng
 [WARN ] POSSIBLE_FALSE_POS   img_0150.txt:3  box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.23)
 [WARN ] POSSIBLE_FALSE_POS   img_0155.txt:2  box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.00)
 [WARN ] POSSIBLE_FALSE_POS   img_0155.txt:3  box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.00)
+[WARN ] POSSIBLE_FALSE_POS   img_0177.txt:2  box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00)
 [WARN ] POSSIBLE_FALSE_POS   img_0180.txt:5  box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00)
 [WARN ] POSSIBLE_FALSE_POS   img_0189.txt:4  box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.01)
 [WARN ] POSSIBLE_FALSE_POS   img_0193.txt:6  box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.02)
@@ -61,6 +63,7 @@ second_opinion -> 120 dòng
 [WARN ] POSSIBLE_LOOSE_BOX   img_0015  box nhãn cùng lớp nhưng IoU=0.34 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0018  box nhãn cùng lớp nhưng IoU=0.45 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0036  box nhãn cùng lớp nhưng IoU=0.43 < 0.5
+[WARN ] POSSIBLE_LOOSE_BOX   img_0038  box nhãn cùng lớp nhưng IoU=0.40 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0045  box nhãn cùng lớp nhưng IoU=0.33 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0046  box nhãn cùng lớp nhưng IoU=0.38 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0054  box nhãn cùng lớp nhưng IoU=0.38 < 0.5
@@ -140,6 +143,7 @@ second_opinion -> 120 dòng
 [WARN ] POSSIBLE_MISSING     img_0220  model dự đoán lớp 1 (conf=0.82) nhưng thiếu box nhãn
 [WARN ] POSSIBLE_WRONG_CLASS img_0019  nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.99)
 [WARN ] POSSIBLE_WRONG_CLASS img_0020  nghi ngờ gán nhầm lớp (model dự đoán 3, IoU=0.94)
+[WARN ] POSSIBLE_WRONG_CLASS img_0021  nghi ngờ gán nhầm lớp (model dự đoán 1, IoU=0.97)
 [WARN ] POSSIBLE_WRONG_CLASS img_0034  nghi ngờ gán nhầm lớp (model dự đoán 1, IoU=0.89)
 [WARN ] POSSIBLE_WRONG_CLASS img_0037  nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.97)
 [WARN ] POSSIBLE_WRONG_CLASS img_0070  nghi ngờ gán nhầm lớp (model dự đoán 1, IoU=0.99)
@@ -160,8 +164,8 @@ second_opinion -> 120 dòng
 error MISSING_LABEL_FILE     6
 warn  BOX_HUGE               3
 warn  BOX_TINY               7
-warn  EMPTY_LABEL            14
-warn  POSSIBLE_FALSE_POS     23
-warn  POSSIBLE_LOOSE_BOX     27
+warn  EMPTY_LABEL            15
+warn  POSSIBLE_FALSE_POS     24
+warn  POSSIBLE_LOOSE_BOX     28
 warn  POSSIBLE_MISSING       53
-warn  POSSIBLE_WRONG_CLASS   17
+warn  POSSIBLE_WRONG_CLASS   18

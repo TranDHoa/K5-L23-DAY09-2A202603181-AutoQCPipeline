@@ -1,9 +1,9 @@
 # Danh sách lỗi — SAU người duyệt (v3)
-ảnh đã quét: 193
+ảnh đã quét: 202
 
 label_format -> 10 dòng
-missing_labels -> 3 dòng
-second_opinion -> 53 dòng
+missing_labels -> 4 dòng
+second_opinion -> 57 dòng
 
 [WARN ] BOX_HUGE             img_0018.txt:1  diện tích box quá lớn (0.97 > 0.95)
 [WARN ] BOX_HUGE             img_0128.txt:1  diện tích box quá lớn (0.99 > 0.95)
@@ -15,6 +15,7 @@ second_opinion -> 53 dòng
 [WARN ] BOX_TINY             img_0161.txt:3  cạnh ngắn box quá nhỏ (11.4px < 12px)
 [WARN ] BOX_TINY             img_0161.txt:4  cạnh ngắn box quá nhỏ (11.9px < 12px)
 [WARN ] BOX_TINY             img_0183.txt:11  cạnh ngắn box quá nhỏ (11.8px < 12px)
+[WARN ] EMPTY_LABEL          img_0013  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0097  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0129  file nhãn rỗng: ảnh nền hay thiếu nhãn?
 [WARN ] EMPTY_LABEL          img_0192  file nhãn rỗng: ảnh nền hay thiếu nhãn?
@@ -33,6 +34,7 @@ second_opinion -> 53 dòng
 [WARN ] POSSIBLE_FALSE_POS   img_0134.txt:5  box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.04)
 [WARN ] POSSIBLE_FALSE_POS   img_0149.txt:3  box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.00)
 [WARN ] POSSIBLE_FALSE_POS   img_0150.txt:3  box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.23)
+[WARN ] POSSIBLE_FALSE_POS   img_0177.txt:2  box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00)
 [WARN ] POSSIBLE_FALSE_POS   img_0180.txt:5  box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00)
 [WARN ] POSSIBLE_FALSE_POS   img_0189.txt:4  box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.01)
 [WARN ] POSSIBLE_FALSE_POS   img_0191.txt:1  box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.26)
@@ -40,7 +42,9 @@ second_opinion -> 53 dòng
 [WARN ] POSSIBLE_FALSE_POS   img_0212.txt:4  box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.15)
 [WARN ] POSSIBLE_LOOSE_BOX   img_0015  box nhãn cùng lớp nhưng IoU=0.34 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0018  box nhãn cùng lớp nhưng IoU=0.45 < 0.5
+[WARN ] POSSIBLE_LOOSE_BOX   img_0021  box nhãn cùng lớp nhưng IoU=0.49 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0036  box nhãn cùng lớp nhưng IoU=0.43 < 0.5
+[WARN ] POSSIBLE_LOOSE_BOX   img_0038  box nhãn cùng lớp nhưng IoU=0.40 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0045  box nhãn cùng lớp nhưng IoU=0.33 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0046  box nhãn cùng lớp nhưng IoU=0.38 < 0.5
 [WARN ] POSSIBLE_LOOSE_BOX   img_0054  box nhãn cùng lớp nhưng IoU=0.38 < 0.5
@@ -67,6 +71,7 @@ second_opinion -> 53 dòng
 [WARN ] POSSIBLE_MISSING     img_0160  model dự đoán lớp 2 (conf=0.78) nhưng thiếu box nhãn
 [WARN ] POSSIBLE_MISSING     img_0183  model dự đoán lớp 1 (conf=0.81) nhưng thiếu box nhãn
 [WARN ] POSSIBLE_MISSING     img_0199  model dự đoán lớp 1 (conf=0.74) nhưng thiếu box nhãn
+[WARN ] POSSIBLE_MISSING     img_0210  model dự đoán lớp 0 (conf=0.67) nhưng thiếu box nhãn
 [WARN ] POSSIBLE_MISSING     img_0220  model dự đoán lớp 1 (conf=0.62) nhưng thiếu box nhãn
 [WARN ] POSSIBLE_WRONG_CLASS img_0078  nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.92)
 [WARN ] POSSIBLE_WRONG_CLASS img_0083  nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.97)
@@ -75,10 +80,10 @@ second_opinion -> 53 dòng
 ## Tổng hợp theo mã
 warn  BOX_HUGE               3
 warn  BOX_TINY               7
-warn  EMPTY_LABEL            3
-warn  POSSIBLE_FALSE_POS     20
-warn  POSSIBLE_LOOSE_BOX     18
-warn  POSSIBLE_MISSING       12
+warn  EMPTY_LABEL            4
+warn  POSSIBLE_FALSE_POS     21
+warn  POSSIBLE_LOOSE_BOX     20
+warn  POSSIBLE_MISSING       13
 warn  POSSIBLE_WRONG_CLASS   3
 
-Kết luận: HOLD — Tỉ lệ ảnh còn cảnh báo là 17.62% (34/193 ảnh), vượt hoặc chạm ngưỡng giữ lại 10.00%.
+Kết luận: HOLD — Tỉ lệ ảnh còn cảnh báo là 18.81% (38/202 ảnh), vượt hoặc chạm ngưỡng giữ lại 10.00%.

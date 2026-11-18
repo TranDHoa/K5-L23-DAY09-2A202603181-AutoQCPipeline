@@ -6,6 +6,7 @@ missing_labels,error,MISSING_LABEL_FILE,img_0135,,ảnh không có file nhãn,
 missing_labels,error,MISSING_LABEL_FILE,img_0170,,ảnh không có file nhãn,
 missing_labels,error,MISSING_LABEL_FILE,img_0219,,ảnh không có file nhãn,
 missing_labels,warn,EMPTY_LABEL,img_0004,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
+missing_labels,warn,EMPTY_LABEL,img_0013,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
 missing_labels,warn,EMPTY_LABEL,img_0050,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
 missing_labels,warn,EMPTY_LABEL,img_0057,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
 missing_labels,warn,EMPTY_LABEL,img_0065,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
@@ -39,6 +40,7 @@ second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0018,,box nhãn cùng lớp nhưng Io
 second_opinion,warn,POSSIBLE_WRONG_CLASS,img_0019,,"nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.99)","{""conf"": 0.941, ""iou"": 0.9876, ""pred_class"": 0}"
 second_opinion,warn,POSSIBLE_WRONG_CLASS,img_0020,,"nghi ngờ gán nhầm lớp (model dự đoán 3, IoU=0.94)","{""conf"": 0.9474, ""iou"": 0.9433, ""pred_class"": 3}"
 second_opinion,warn,POSSIBLE_MISSING,img_0020,,model dự đoán lớp 1 (conf=0.84) nhưng thiếu box nhãn,"{""conf"": 0.8408, ""pred_class"": 1}"
+second_opinion,warn,POSSIBLE_WRONG_CLASS,img_0021,,"nghi ngờ gán nhầm lớp (model dự đoán 1, IoU=0.97)","{""conf"": 0.9339, ""iou"": 0.9719, ""pred_class"": 1}"
 second_opinion,warn,POSSIBLE_MISSING,img_0022,,model dự đoán lớp 0 (conf=0.85) nhưng thiếu box nhãn,"{""conf"": 0.8483, ""pred_class"": 0}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0024,7,box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.10),"{""iou"": 0.0972}"
 second_opinion,warn,POSSIBLE_MISSING,img_0028,,model dự đoán lớp 1 (conf=0.94) nhưng thiếu box nhãn,"{""conf"": 0.9406, ""pred_class"": 1}"
@@ -49,6 +51,7 @@ second_opinion,warn,POSSIBLE_WRONG_CLASS,img_0034,,"nghi ngờ gán nhầm lớp
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0035,2,box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0036,,box nhãn cùng lớp nhưng IoU=0.43 < 0.5,"{""conf"": 0.8733, ""iou"": 0.4265}"
 second_opinion,warn,POSSIBLE_WRONG_CLASS,img_0037,,"nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.97)","{""conf"": 0.9134, ""iou"": 0.9686, ""pred_class"": 0}"
+second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0038,,box nhãn cùng lớp nhưng IoU=0.40 < 0.5,"{""conf"": 0.9212, ""iou"": 0.3975}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0045,,box nhãn cùng lớp nhưng IoU=0.33 < 0.5,"{""conf"": 0.7519, ""iou"": 0.3348}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0046,,box nhãn cùng lớp nhưng IoU=0.38 < 0.5,"{""conf"": 0.8928, ""iou"": 0.3823}"
 second_opinion,warn,POSSIBLE_MISSING,img_0047,,model dự đoán lớp 1 (conf=0.72) nhưng thiếu box nhãn,"{""conf"": 0.717, ""pred_class"": 1}"
@@ -123,6 +126,7 @@ second_opinion,warn,POSSIBLE_MISSING,img_0165,,model dự đoán lớp 1 (conf=0
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0171,,box nhãn cùng lớp nhưng IoU=0.43 < 0.5,"{""conf"": 0.7292, ""iou"": 0.4269}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0171,,box nhãn cùng lớp nhưng IoU=0.33 < 0.5,"{""conf"": 0.6386, ""iou"": 0.3299}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0175,,box nhãn cùng lớp nhưng IoU=0.42 < 0.5,"{""conf"": 0.8997, ""iou"": 0.4215}"
+second_opinion,warn,POSSIBLE_FALSE_POS,img_0177,2,box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"
 second_opinion,warn,POSSIBLE_MISSING,img_0178,,model dự đoán lớp 1 (conf=0.93) nhưng thiếu box nhãn,"{""conf"": 0.9324, ""pred_class"": 1}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0179,,box nhãn cùng lớp nhưng IoU=0.37 < 0.5,"{""conf"": 0.753, ""iou"": 0.3661}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0180,5,box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"

@@ -1,4 +1,5 @@
 check,severity,code,image,line,message,extra
+missing_labels,warn,EMPTY_LABEL,img_0013,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
 missing_labels,warn,EMPTY_LABEL,img_0097,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
 missing_labels,warn,EMPTY_LABEL,img_0129,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
 missing_labels,warn,EMPTY_LABEL,img_0192,,file nhãn rỗng: ảnh nền hay thiếu nhãn?,
@@ -15,10 +16,12 @@ label_format,warn,BOX_HUGE,img_0196,1,diện tích box quá lớn (0.98 > 0.95),
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0014,2,box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.15),"{""iou"": 0.145}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0015,,box nhãn cùng lớp nhưng IoU=0.34 < 0.5,"{""conf"": 0.8941, ""iou"": 0.3434}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0018,,box nhãn cùng lớp nhưng IoU=0.45 < 0.5,"{""conf"": 0.7195, ""iou"": 0.447}"
+second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0021,,box nhãn cùng lớp nhưng IoU=0.49 < 0.5,"{""conf"": 0.8362, ""iou"": 0.486}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0022,2,box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"
 second_opinion,warn,POSSIBLE_MISSING,img_0032,,model dự đoán lớp 1 (conf=0.61) nhưng thiếu box nhãn,"{""conf"": 0.608, ""pred_class"": 1}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0035,2,box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0036,,box nhãn cùng lớp nhưng IoU=0.43 < 0.5,"{""conf"": 0.8733, ""iou"": 0.4265}"
+second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0038,,box nhãn cùng lớp nhưng IoU=0.40 < 0.5,"{""conf"": 0.9212, ""iou"": 0.3975}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0045,,box nhãn cùng lớp nhưng IoU=0.33 < 0.5,"{""conf"": 0.7519, ""iou"": 0.3348}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0046,,box nhãn cùng lớp nhưng IoU=0.38 < 0.5,"{""conf"": 0.8928, ""iou"": 0.3823}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0054,,box nhãn cùng lớp nhưng IoU=0.38 < 0.5,"{""conf"": 0.7403, ""iou"": 0.3788}"
@@ -54,6 +57,7 @@ second_opinion,warn,POSSIBLE_FALSE_POS,img_0150,3,box nhãn lớp 1 không khớ
 second_opinion,warn,POSSIBLE_MISSING,img_0159,,model dự đoán lớp 1 (conf=0.67) nhưng thiếu box nhãn,"{""conf"": 0.6658, ""pred_class"": 1}"
 second_opinion,warn,POSSIBLE_MISSING,img_0160,,model dự đoán lớp 2 (conf=0.78) nhưng thiếu box nhãn,"{""conf"": 0.7768, ""pred_class"": 2}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0175,,box nhãn cùng lớp nhưng IoU=0.42 < 0.5,"{""conf"": 0.8997, ""iou"": 0.4215}"
+second_opinion,warn,POSSIBLE_FALSE_POS,img_0177,2,box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0180,5,box nhãn lớp 3 không khớp dự đoán nào của model (max_iou=0.00),"{""iou"": 0.0}"
 second_opinion,warn,POSSIBLE_MISSING,img_0183,,model dự đoán lớp 1 (conf=0.81) nhưng thiếu box nhãn,"{""conf"": 0.8104, ""pred_class"": 1}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0189,4,box nhãn lớp 0 không khớp dự đoán nào của model (max_iou=0.01),"{""iou"": 0.0092}"
@@ -61,6 +65,7 @@ second_opinion,warn,POSSIBLE_FALSE_POS,img_0191,1,box nhãn lớp 0 không khớ
 second_opinion,warn,POSSIBLE_MISSING,img_0199,,model dự đoán lớp 1 (conf=0.74) nhưng thiếu box nhãn,"{""conf"": 0.7376, ""pred_class"": 1}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0200,,box nhãn cùng lớp nhưng IoU=0.43 < 0.5,"{""conf"": 0.6911, ""iou"": 0.4345}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0206,1,box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.11),"{""iou"": 0.1083}"
+second_opinion,warn,POSSIBLE_MISSING,img_0210,,model dự đoán lớp 0 (conf=0.67) nhưng thiếu box nhãn,"{""conf"": 0.6665, ""pred_class"": 0}"
 second_opinion,warn,POSSIBLE_LOOSE_BOX,img_0212,,box nhãn cùng lớp nhưng IoU=0.33 < 0.5,"{""conf"": 0.6733, ""iou"": 0.3285}"
 second_opinion,warn,POSSIBLE_FALSE_POS,img_0212,4,box nhãn lớp 1 không khớp dự đoán nào của model (max_iou=0.15),"{""iou"": 0.1501}"
 second_opinion,warn,POSSIBLE_WRONG_CLASS,img_0220,,"nghi ngờ gán nhầm lớp (model dự đoán 0, IoU=0.91)","{""conf"": 0.7077, ""iou"": 0.9106, ""pred_class"": 0}"
