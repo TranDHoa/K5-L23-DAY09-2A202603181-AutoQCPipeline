@@ -27,13 +27,187 @@ Bẫy cần nghĩ tới (có test cho từng cái)
 
 Gợi ý: `yaml.safe_load / safe_dump`.
 """
-from collections import defaultdict  # noqa: F401
+from collections import defaultdict
 
-import yaml  # noqa: F401
+import yaml
 
-from ..common import ERROR, parse_yolo_line  # noqa: F401
+from ..common import ERROR, parse_yolo_line
+
+DROP_CODES = {"BAD_FORMAT", "BAD_CLASS_ID", "BOX_ZERO", "DUP_BOX"}
+REMOVE_IMG_PREFIXES = ("DUP_IMAGE_",)
+REMOVE_IMG_CODES = {"LEAK_TEST", "CORRUPT_IMAGE", "BAD_SIZE"}
+
+
+def _is_remove_image_code(code: str) -> bool:
+    return code in REMOVE_IMG_CODES or code.startswith(REMOVE_IMG_PREFIXES)
 
 
 def fix(ds, issues, cfg):
-    # TODO
-    raise NotImplementedError("autofix chưa làm")
+    fixes = []
+    err_issues = [i for i in issues if i.severity == ERROR]
+
+    # 1. Xác định các ảnh cần xoá hoàn toàn khỏi ds
+    removed_stems = set()
+    remove_reasons = {}
+    for iss in err_issues:
+        if _is_remove_image_code(iss.code):
+            removed_stems.add(iss.image)
+            remove_reasons.setdefault(iss.image, iss.code)
+
+    for stem in sorted(removed_stems):
+        img_p = ds.image_path(stem)
+        lbl_p = ds.label_path(stem)
+        existed = False
+        if img_p and img_p.exists():
+            img_p.unlink()
+            existed = True
+        if lbl_p.exists():
+            lbl_p.unlink()
+            existed = True
+        if existed:
+            fixes.append(
+                {
+                    "image": stem,
+                    "line": "",
+                    "action": "remove_image",
+                    "before": remove_reasons[stem],
+                    "after": "(đã xoá ảnh và nhãn)",
+                }
+            )
+
+    # 2. Sửa data.yaml nếu có lỗi BAD_CLASS_NAME (chỉ ghi 1 lần)
+    has_bad_class_name = any(iss.code == "BAD_CLASS_NAME" for iss in err_issues)
+    if has_bad_class_name and ds.yaml_path.exists():
+        data = yaml.safe_load(ds.yaml_path.read_text(encoding="utf-8")) or {}
+        before_names = str(data.get("names", ""))
+        target_classes = list(cfg["classes"])
+        if data.get("names") != target_classes:
+            data["names"] = target_classes
+            ds.yaml_path.write_text(
+                yaml.safe_dump(data, sort_keys=False, allow_unicode=True),
+                encoding="utf-8",
+            )
+            fixes.append(
+                {
+                    "image": "data.yaml",
+                    "line": "",
+                    "action": "rename_classes",
+                    "before": before_names,
+                    "after": str(target_classes),
+                }
+            )
+
+    # 3. Ghi nhận MISSING_LABEL_FILE (không tạo file rỗng, chuyển người gán)
+    missing_stems = sorted(
+        {
+            iss.image
+            for iss in err_issues
+            if iss.code == "MISSING_LABEL_FILE" and iss.image not in removed_stems
+        }
+    )
+    for stem in missing_stems:
+        fixes.append(
+            {
+                "image": stem,
+                "line": "",
+                "action": "needs_label",
+                "before": "(không có file)",
+                "after": "chuyển người gán",
+            }
+        )
+
+    # 4. Gom lỗi theo từng file nhãn (bỏ qua ảnh đã bị xoá)
+    line_actions = defaultdict(dict)  # stem -> {line_no: "drop" | "clip"}
+    for iss in err_issues:
+        if iss.image in removed_stems or iss.line is None:
+            continue
+        if iss.code in DROP_CODES:
+            # Xoá dòng luôn thắng cắt box
+            line_actions[iss.image][iss.line] = "drop"
+        elif iss.code == "BOX_OUT_OF_IMAGE":
+            if line_actions[iss.image].get(iss.line) != "drop":
+                line_actions[iss.image][iss.line] = "clip"
+
+    # 5. Xử lý và ghi lại từng file nhãn MỘT lần duy nhất
+    for stem in sorted(line_actions):
+        lbl_p = ds.label_path(stem)
+        if not lbl_p.exists():
+            continue
+
+        raw_lines = lbl_p.read_text(encoding="utf-8", errors="replace").splitlines()
+        actions_map = line_actions[stem]
+        new_lines = []
+        changed = False
+
+        for line_no, text in enumerate(raw_lines, 1):
+            act = actions_map.get(line_no)
+            if act is None:
+                new_lines.append(text)
+                continue
+
+            if act == "drop":
+                changed = True
+                fixes.append(
+                    {
+                        "image": stem,
+                        "line": line_no,
+                        "action": "drop_line",
+                        "before": text.strip(),
+                        "after": "(đã xoá)",
+                    }
+                )
+            elif act == "clip":
+                try:
+                    cid, cx, cy, w, h = parse_yolo_line(text)
+                except ValueError:
+                    changed = True
+                    fixes.append(
+                        {
+                            "image": stem,
+                            "line": line_no,
+                            "action": "drop_line",
+                            "before": text.strip(),
+                            "after": "(đã xoá)",
+                        }
+                    )
+                    continue
+
+                x1 = max(0.0, min(1.0, cx - w / 2.0))
+                y1 = max(0.0, min(1.0, cy - h / 2.0))
+                x2 = max(0.0, min(1.0, cx + w / 2.0))
+                y2 = max(0.0, min(1.0, cy + h / 2.0))
+                nw, nh = x2 - x1, y2 - y1
+
+                if nw <= 1e-9 or nh <= 1e-9:
+                    changed = True
+                    fixes.append(
+                        {
+                            "image": stem,
+                            "line": line_no,
+                            "action": "drop_line",
+                            "before": text.strip(),
+                            "after": "(đã xoá)",
+                        }
+                    )
+                else:
+                    ncx = (x1 + x2) / 2.0
+                    ncy = (y1 + y2) / 2.0
+                    clipped_str = f"{cid} {ncx:.6f} {ncy:.6f} {nw:.6f} {nh:.6f}"
+                    if clipped_str != text.strip():
+                        changed = True
+                        fixes.append(
+                            {
+                                "image": stem,
+                                "line": line_no,
+                                "action": "clip_box",
+                                "before": text.strip(),
+                                "after": clipped_str,
+                            }
+                        )
+                    new_lines.append(clipped_str)
+
+        if changed:
+            content = "\n".join(new_lines) + ("\n" if new_lines else "")
+            lbl_p.write_text(content, encoding="utf-8")
+
+    return fixes
